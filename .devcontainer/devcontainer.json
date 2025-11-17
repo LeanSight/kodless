@@ -35,5 +35,5 @@
 	
 	// Lifecycle hooks - run commands at different stages
 	"postCreateCommand": "curl -sSfL https://raw.githubusercontent.com/jfernandez/mdserve/main/install.sh | bash",
-	"postStartCommand": "nohup mdserve --hostname 0.0.0.0 --port 5000 investigacion > /tmp/mdserve.log 2>&1 &"
+	"postStartCommand": "bash -c 'nohup mdserve --hostname 0.0.0.0 --port 5000 investigacion > /tmp/mdserve.log 2>&1 & sleep 2 && echo \"\" && echo \"📚 Documentación WYSIWID disponible en:\" && gitpod environment port list | grep 5000 | awk \"{print \\$3}\" && echo \"\"'"
 }
